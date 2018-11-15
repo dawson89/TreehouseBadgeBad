@@ -23,6 +23,7 @@ namespace TreehouseBadges
 		public DateTime EarnedDate { get; set; }
 		[JsonProperty("courses")]
 		public Cours[] Courses { get; set; }
+		public string FavoriteClass { get; set; }
 	}
 
 

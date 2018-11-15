@@ -39,16 +39,59 @@ namespace TreehouseBadges
 			var getMyJsonFile = "https://teamtreehouse.com/dawson89.json";
 			var badges = DeserializeBadges(getMyJsonFile);
 			var allBadges = GetAllBadges(badges);
+
+
+			// var newFileName = Path.Combine(directory.FullName, "all.json");
+		//	badges = DeserializeBadges(newFileName);
 			var customImportBadges = GetCustomImportBadges(badges);
-
-			Console.WriteLine("This is allBadges question");
-			var question1Response = Console.ReadLine();
-
-			Console.WriteLine("This was your response " + question1Response);
-
 			var customExportBadges = GetCustomExportBadges(badges);
-			SerializeBadgeToFile(allBadges, Path.Combine(directory.FullName, "allbadges.json"));
 
+
+			//var customImportBadges = GetCustomImportBadges(badges);
+			//SerializeBadgeToFile(customImportBadges, Path.Combine(directory.FullName, "importbadge.json"));
+
+			//var customExportBadges = GetCustomExportBadges(badges);
+			//SerializeBadgeToFile(allBadges, Path.Combine(directory.FullName, "allbadges.json"));
+
+			//Console.WriteLine("This is allBadges question");
+			//var question1Response = Console.ReadLine();
+			//Console.WriteLine("This was your response " + question1Response);
+
+
+			string yes = "Y";
+
+			Console.WriteLine("Would you like to view Dawson's recently earned badges?  (Hint: Enter Y or N) ");
+			string Answer = Console.ReadLine();
+			Answer = Answer.ToUpper();
+
+			while (Answer == yes)
+			{
+				for (int i = 0; i < customImportBadges.Count; i++)
+				{
+					var displayNumber = i + 1;
+					var badge = customImportBadges[i];
+					Console.WriteLine(displayNumber.ToString() + " ID: " + badge.Id + " Name: " + badge.Name + " Date Earned: " + badge.EarnedDate.ToShortDateString() + " Favorite: " + badge.FavoriteClass);
+				}
+
+				Console.Write("To add/update/delete favorite information enter the number of the line you would like to select? ");
+
+				var answerNo = Console.ReadLine();
+				var indexAnswer = int.Parse(answerNo);
+				var goFind = indexAnswer - 1;
+
+				Console.Write("Badge ID Number: " + customImportBadges[goFind].Id + " Badge Name: " + customImportBadges[goFind].Name + " Favorite: " + customImportBadges[goFind].FavoriteClass);
+				customImportBadges[goFind].FavoriteClass = Console.ReadLine();
+				Console.WriteLine("Would like to make another change? ");
+				Answer = Console.ReadLine();
+				//customImportBadges = Path.Combine(directory.FullName, "customimportbadges.json");
+				//SerializeBadgeToFile(customImportBadges, fileName);
+
+				var newFileName = Path.Combine(directory.FullName, "customImportBadges.json");
+				SerializeBadgeToFile(customImportBadges, newFileName);
+
+				newFileName = Path.Combine(directory.FullName, "customExportBadges.json");
+				SerializeBadgeToFile(customExportBadges, newFileName);
+			}
 		}
 
 		public static List<Badge> DeserializeBadges(string externalUri)
