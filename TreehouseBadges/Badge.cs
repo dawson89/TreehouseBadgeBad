@@ -11,13 +11,18 @@ namespace TreehouseBadges
 
 	public class Badge
 	{
-		public int id { get; set; }
-		public string name { get; set; }
-		public string url { get; set; }
-		public string icon_url { get; set; }
+		[JsonProperty("id")]
+		public int Id { get; set; }
+		[JsonProperty("name")]
+		public string Name { get; set; }
+		[JsonProperty("url")]
+		public string Url { get; set; }
+		[JsonProperty("icon_url")]
+		public string IconUrl { get; set; }
 		[JsonProperty ("earned_date")]
 		public DateTime EarnedDate { get; set; }
-		public Cours[] courses { get; set; }
+		[JsonProperty("courses")]
+		public Cours[] Courses { get; set; }
 	}
 
 
