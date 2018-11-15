@@ -36,17 +36,17 @@ namespace TreehouseBadges
 			string currentDirectory = Directory.GetCurrentDirectory();
 			DirectoryInfo directory = new DirectoryInfo(currentDirectory);
 
-			// var fileName = Path.Combine(directory.FullName, "dawson89.json");
-			// System.Threading.Tasks.Task<string> xfdfdf = BadgeClient.GetStringAsync("dawson89.json");
-			// var fileName = Path.Combine(directory.FullName, "allBadges.json");
-
 			var getMyJsonFile = "https://teamtreehouse.com/dawson89.json";
 			var badges = DeserializeBadges(getMyJsonFile);
 			var allBadges = GetAllBadges(badges);
 			var customImportBadges = GetCustomImportBadges(badges);
+
+			Console.WriteLine("This is allBadges question");
+			var question1Response = Console.ReadLine();
+
+			Console.WriteLine("This was your response " + question1Response);
+
 			var customExportBadges = GetCustomExportBadges(badges);
-
-
 			SerializeBadgeToFile(allBadges, Path.Combine(directory.FullName, "allbadges.json"));
 
 		}
