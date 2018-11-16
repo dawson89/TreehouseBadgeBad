@@ -19,7 +19,6 @@ namespace TreehouseBadges
 
 		public static string InternetGet(string remoteUri)
 		{
-
 			// Create a new WebClient instance.
 			WebClient myWebClient = new WebClient();
 
@@ -38,25 +37,18 @@ namespace TreehouseBadges
 
 			var getMyJsonFile = "https://teamtreehouse.com/dawson89.json";
 			var badges = DeserializeBadges(getMyJsonFile);
-			var allBadges = GetAllBadges(badges);
-
+			//var allBadges = GetAllBadges(badges);
 
 			// var newFileName = Path.Combine(directory.FullName, "all.json");
-		//	badges = DeserializeBadges(newFileName);
+			//	badges = DeserializeBadges(newFileName);
 			var customImportBadges = GetCustomImportBadges(badges);
 			var customExportBadges = GetCustomExportBadges(badges);
-
 
 			//var customImportBadges = GetCustomImportBadges(badges);
 			//SerializeBadgeToFile(customImportBadges, Path.Combine(directory.FullName, "importbadge.json"));
 
 			//var customExportBadges = GetCustomExportBadges(badges);
 			//SerializeBadgeToFile(allBadges, Path.Combine(directory.FullName, "allbadges.json"));
-
-			//Console.WriteLine("This is allBadges question");
-			//var question1Response = Console.ReadLine();
-			//Console.WriteLine("This was your response " + question1Response);
-
 
 			string yes = "Y";
 
@@ -81,10 +73,9 @@ namespace TreehouseBadges
 
 				Console.Write("Badge ID Number: " + customImportBadges[goFind].Id + " Badge Name: " + customImportBadges[goFind].Name + " Favorite: " + customImportBadges[goFind].FavoriteClass);
 				customImportBadges[goFind].FavoriteClass = Console.ReadLine();
-				Console.WriteLine("Would like to make another change? ");
+				Console.WriteLine("Would like to make another change? Hint: Enter Y or N");
 				Answer = Console.ReadLine();
-				//customImportBadges = Path.Combine(directory.FullName, "customimportbadges.json");
-				//SerializeBadgeToFile(customImportBadges, fileName);
+				Answer = Answer.ToUpper();
 
 				var newFileName = Path.Combine(directory.FullName, "customImportBadges.json");
 				SerializeBadgeToFile(customImportBadges, newFileName);
@@ -102,7 +93,7 @@ namespace TreehouseBadges
 
 			var namingShitIsHard = JsonConvert.DeserializeObject<FullBadge>(webResults);
 
-				badges.AddRange(namingShitIsHard.badges);
+				badges.AddRange(namingShitIsHard.Badges);
 
 			//var serializer = new JsonSerializer();
 			//using (var reader = new StreamReader(fileName))

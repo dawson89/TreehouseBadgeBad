@@ -14,7 +14,7 @@ namespace TreehouseBadges
 		public string profile_url { get; set; }
 		public string gravatar_url { get; set; }
 		public string gravatar_hash { get; set; }
-		public Badge[] badges { get; set; }
+		public Badge[] Badges { get; set; }
 		public Points points { get; set; }
 	}
 
