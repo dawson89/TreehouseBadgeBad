@@ -9,6 +9,8 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System.Net;
 
+//Make sure your install Newtonsoft.Json using Nuget Package Manager
+
 namespace TreehouseBadges
 {
 	class Program
