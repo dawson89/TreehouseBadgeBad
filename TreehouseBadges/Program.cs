@@ -43,10 +43,13 @@ namespace TreehouseBadges
 
 			// var newFileName = Path.Combine(directory.FullName, "all.json");
 			//	badges = DeserializeBadges(newFileName);
-			var customImportBadges = GetCustomImportBadges(badges);
-			var customExportBadges = GetCustomExportBadges(badges);
 
-			//var customImportBadges = GetCustomImportBadges(badges);
+			var customImportBadges = GetCustomImportBadges(badges);
+
+			SerializeBadgeToFile(customImportBadges, Path.Combine(directory.FullName, "customImportBadges.json"));
+			//var customExportBadges = GetCustomExportBadges(badges);
+
+			//var customImportBadges = GetCus3tomImportBadges(badges);
 			//SerializeBadgeToFile(customImportBadges, Path.Combine(directory.FullName, "importbadge.json"));
 
 			//var customExportBadges = GetCustomExportBadges(badges);
@@ -77,14 +80,22 @@ namespace TreehouseBadges
 				customImportBadges[goFind].FavoriteClass = Console.ReadLine();
 				Console.WriteLine("Would like to make another change? Hint: Enter Y or N");
 				Answer = Console.ReadLine();
-				Answer = Answer.ToUpper();
 
-				var newFileName = Path.Combine(directory.FullName, "customImportBadges.json");
-				SerializeBadgeToFile(customImportBadges, newFileName);
 
-				newFileName = Path.Combine(directory.FullName, "customExportBadges.json");
-				SerializeBadgeToFile(customExportBadges, newFileName);
+
+
+				//newFileName = Path.Combine(directory.FullName, "customExportBadges.json");
+				//SerializeBadgeToFile(customExportBadges, newFileName);
+
+
+				// This set any changes back into the Data fields so that it will persist data
+			//	newFileName = Path.Combine(directory.FullName, "dawson89.json");
+			//	SerializeBadgeToFile(customExportBadges, newFileName);
 			}
+			getMyJsonFile = Path.Combine(directory.FullName, "allbadges.json");
+			SerializeBadgeToFile(customImportBadges, getMyJsonFile);
+
+
 		}
 
 		public static List<Badge> DeserializeBadges(string externalUri)
